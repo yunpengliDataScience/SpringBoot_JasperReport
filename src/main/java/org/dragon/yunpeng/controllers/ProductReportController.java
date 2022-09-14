@@ -35,7 +35,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public class ProductReportController {
 
 	@GetMapping(value = "/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
-	public ResponseEntity<byte[]> downloadInvoice() throws JRException, IOException {
+	public ResponseEntity<byte[]> showProductReport1() throws JRException, IOException {
 
 		JRDataSource beanCollectionDataSource = ReportDataSource.getReportDataSource();
 
@@ -61,7 +61,7 @@ public class ProductReportController {
 	}
 
 	@GetMapping(value = "/pdf2")
-	public void getPdf(HttpServletResponse response) throws JRException, IOException {
+	public void showProductReport2(HttpServletResponse response) throws JRException, IOException {
 
 		JRDataSource beanCollectionDataSource = ReportDataSource.getReportDataSource();
 		Map<String, Object> parameters = new HashMap<String, Object>();
@@ -79,16 +79,4 @@ public class ProductReportController {
 		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 	}
 
-//	@RequestMapping(path = "/pdf", method = RequestMethod.GET)
-//    public ModelAndView report() {
-//
-//        JasperReportsPdfView view = new JasperReportsPdfView();
-//        view.setUrl("classpath:report2.jrxml");
-//        view.setApplicationContext(appContext);
-//
-//        Map<String, Object> params = new HashMap<String, Object>();
-//        params.put("datasource", carService.findAll());
-//
-//        return new ModelAndView(view, params);
-//    }
 }
